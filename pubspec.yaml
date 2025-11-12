@@ -1,0 +1,17 @@
+name: crypto_app
+description: A modern Web3-looking crypto wallet UI (CoinGecko demo)
+publish_to: "none"
+version: 0.0.1
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  http: ^1.6.0
+  fl_chart: ^1.1.1
+  shared_preferences: ^2.1.1
+
+flutter:
+  uses-material-design: true
