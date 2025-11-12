@@ -1,16 +1,48 @@
 # crypto_app
 
-A new Flutter project.
+A modern, responsive Flutter application for real-time cryptocurrency tracking, fetching data from the CoinGecko API.
 
-## Getting Started
+Core Features
 
-This project is a starting point for a Flutter application.
+Live Data: Tracks the top 50 cryptocurrencies with real-time price, volume, and 24h change.
 
-A few resources to get you started if this is your first Flutter project:
+Price Charts: Detailed 7-day historical price charts powered by fl_chart.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Favorites: Local storage for saving favorite coins using shared_preferences.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Responsive Design: Optimized for both mobile and tablet, featuring a clean dark theme.
+
+Project Structure Highlight: Data fetching is handled by coingecko_service.dart, UI screens are in the screens/ folder, and persistent data (favorites) is managed by favorites.dart.
+
+Quick Setup
+
+This project is a standard Flutter application.
+
+Prerequisites
+
+Flutter SDK (v3.0 or higher recommended).
+
+The application uses the free CoinGecko API (no API key required).
+
+Step 1: Install Dependencies
+
+Add the following required packages to your pubspec.yaml file:
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.1.0 
+  fl_chart: ^0.68.0 
+  shared_preferences: ^2.2.3
+
+
+Then, run:
+
+flutter pub get
+
+
+Step 2: Run
+
+Execute the application on your desired device or emulator:
+
+flutter run
