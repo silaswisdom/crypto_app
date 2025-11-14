@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/coin.dart';
 import '../services/coingecko_service.dart';
@@ -66,7 +67,8 @@ class _CoinDetailScreenState extends State<CoinDetailScreen> {
                     color: const Color(0xFF0F1624),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     child: ListTile(
-                      leading: Image.network(c.image, width: 48, height: 48),
+                      leading: CachedNetworkImage(imageUrl: c.image,
+                      width: 48, height: 48),
                       title: Text('\$${c.currentPrice.toStringAsFixed(4)}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                       subtitle: Text('Market Cap: \$${(c.marketCap / 1e9).toStringAsFixed(2)}B'),
                       trailing: Column(

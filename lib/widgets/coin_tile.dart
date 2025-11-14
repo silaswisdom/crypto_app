@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/coin.dart';
 
@@ -25,7 +26,7 @@ class CoinTile extends StatelessWidget {
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       leading: CircleAvatar(
         backgroundColor: Colors.white12,
-        backgroundImage: NetworkImage(coin.image),
+        backgroundImage: CachedNetworkImageProvider(coin.image),
       ),
       title: Row(
         children: [

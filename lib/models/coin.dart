@@ -22,9 +22,15 @@ class Coin {
         symbol: j['symbol'] ?? '',
         name: j['name'] ?? '',
         image: j['image'] ?? '',
-        currentPrice: (j['current_price'] ?? 0).toDouble(),
-        priceChangePercentage24h:
-            (j['price_change_percentage_24h'] ?? 0).toDouble(),
-        marketCap: (j['market_cap'] ?? 0).toDouble(),
+        currentPrice: _toDouble(j['current_price']),
+        priceChangePercentage24h: _toDouble(j['price_change_percentage_24h']),
+        marketCap: _toDouble(j['market_cap']),
       );
+
+  static double _toDouble(dynamic value) {
+    if (value == null) return 0;
+    if (value is num) return value.toDouble();
+    if (value is String) return double.tryParse(value) ?? 0;
+    return 0;
+  }
 }
