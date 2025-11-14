@@ -42,7 +42,7 @@ flutter run
 
 X(formally twitter) link: https://x.com/silaswisdo8145/status/1988607636431134919?s=46
 
-APK link: https://drive.google.com/file/d/1EBCpW9KMFJ3yLRUKdZnspWT1GoeQW8H2/view?usp=sharing
+APK link: https://drive.google.com/file/d/1cAzGJ8I6_7JBDvfEjbO_1sKXCGQydoZ7/view?usp=sharing
 
 GitHub Repo link: https://github.com/silaswisdom/crypto_app.git
 
