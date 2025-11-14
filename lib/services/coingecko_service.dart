@@ -8,21 +8,57 @@ class CoinGeckoService {
   static Future<List<Coin>> fetchTopCoins({int perPage = 50, int page = 1}) async {
     final url =
         '$_base/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=$perPage&page=$page&sparkline=false&price_change_percentage=24h';
-        await Future.delayed(const Duration(milliseconds: 100));
-    final res = await http.get(Uri.parse(url));
-    if (res.statusCode != 200) throw Exception('Failed fetching coins');
-    final List data = json.decode(res.body);
-    return data.map((e) => Coin.fromJson(e)).toList();
+
+    try {
+      final res = await http.get(Uri.parse(url));
+
+      if (res.statusCode != 200) {
+        print('CoinGecko error: ${res.statusCode} -> ${res.body}');
+        return [];
+      }
+
+      final body = res.body;
+
+      if (body.trim().startsWith('<')) {
+        print('Received HTML instead of JSON from CoinGecko');
+        return [];
+      }
+
+      final List data = jsonDecode(body);
+      return data.map((e) => Coin.fromJson(e)).toList();
+    } catch (e) {
+      print('Crash prevented: $e');
+      return [];
+    }
   }
 
   static Future<List<List<double>>> fetchMarketChart(String id, {int days = 7}) async {
     final url = '$_base/coins/$id/market_chart?vs_currency=usd&days=$days';
-    final res = await http.get(Uri.parse(url));
-    if (res.statusCode != 200) throw Exception('Failed fetching chart');
-    final Map data = json.decode(res.body);
-    final List prices = data['prices'] ?? [];
-    return prices
-        .map<List<double>>((p) => [(p[0] as num).toDouble(), (p[1] as num).toDouble()])
-        .toList();
+
+    try {
+      final res = await http.get(Uri.parse(url));
+
+      if (res.statusCode != 200) {
+        print('Chart fetch failed: ${res.statusCode}');
+        return [];
+      }
+
+      final body = res.body;
+
+      if (body.trim().startsWith('<')) {
+        print('Chart API returned HTML instead of JSON');
+        return [];
+      }
+
+      final Map data = jsonDecode(body);
+      final List prices = data['prices'] ?? [];
+
+      return prices
+          .map<List<double>>((p) => [(p[0] as num).toDouble(), (p[1] as num).toDouble()])
+          .toList();
+    } catch (e) {
+      print('Crash prevented: $e');
+      return [];
+    }
   }
 }
