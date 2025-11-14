@@ -34,15 +34,16 @@ dependencies:
   http: ^1.1.0 
   fl_chart: ^0.68.0 
   shared_preferences: ^2.2.3
-
-
 Then, run:
-
 flutter pub get
-
-
 Step 2: Run
-
 Execute the application on your desired device or emulator:
-
 flutter run
+
+X(formally twitter) link: https://x.com/silaswisdo8145/status/1988607636431134919?s=46
+
+APK link: https://drive.google.com/file/d/1EBCpW9KMFJ3yLRUKdZnspWT1GoeQW8H2/view?usp=sharing
+
+GitHub Repo link: https://github.com/silaswisdom/crypto_app.git
+
+Demo video link: https://drive.google.com/file/d/1DFEgnC-pkRb0No1wdr4za2OjBfG0CR0Y/view?usp=sharing
